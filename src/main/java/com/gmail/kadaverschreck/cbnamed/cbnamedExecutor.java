@@ -33,10 +33,12 @@ import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.data.key.Keys;
+import org.spongepowered.api.data.type.HandType;
 import org.spongepowered.api.data.type.HandTypes;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.item.ItemTypes;
 import org.spongepowered.api.item.inventory.ItemStack;
+import org.spongepowered.api.item.inventory.type.GridInventory;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.text.format.TextStyles;
@@ -50,16 +52,29 @@ public class cbnamedExecutor implements CommandExecutor{
 
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException{
-        Player target = args.<Player>getOne("player").get();
+        Player target;
+        // Player target = args.<Player>getOne("player").get();
         String cbname = args.<String>getOne("cbname").get();
         ItemStack namedcb = ItemStack.builder()
                 .itemType(ItemTypes.COMMAND_BLOCK).build();
-        namedcb.offer(Keys.DISPLAY_NAME, Text.of( cbname ));
-        target.setItemInHand(HandTypes.OFF_HAND, namedcb);
+        namedcb.offer(Keys.DISPLAY_NAME, Text.of(cbname));
+        target = (Player)src;
 
-        //Gibt eine Meldung in der Konsole aus
-        Sponge.getServer().getConsole().sendMessage(Text.of(TextColors.WHITE, TextStyles.ITALIC, "Gave CommandBlock named ", cbname, " to " ,target.getName()));
+        //prüft, ob der Spieler ein Item in der Haupthand hält
+        if (target.getItemInHand(HandTypes.MAIN_HAND).isPresent())
+        {
+            //Wenn ja, dann wird dem Spieler eine Fehlermeldung angezeigt.
+            target.sendMessage(Text.of(TextColors.RED, "Bitte mache erst deine rechte Hand frei."));
+        }
+        else
+        {
+            //Wenn nicht, dann bekommt der Spieler den CommandBlock in die Haupthand gelegt
+            target.setItemInHand(HandTypes.MAIN_HAND, namedcb);
+            // target.getInventory().query(GridInventory.class).offer(namedcb);
 
+            //Und in der Konsole wird eine Meldung ausgegeben
+            Sponge.getServer().getConsole().sendMessage(Text.of(TextColors.GRAY, TextStyles.ITALIC, "[cbnamed]: Dem Spieler ", target.getName(), " wurde ein CommandBlock mit dem Namen ", cbname, " gegeben."));
+        }
         return CommandResult.success();
     }
 }

@@ -35,7 +35,6 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.text.Text;
-
 import java.util.logging.Logger;
 
 
@@ -57,8 +56,9 @@ public class cbnamed {
     public void onInit(GameInitializationEvent event) {
         CommandSpec namecbCmd = CommandSpec.builder()
                 .description(Text.of("Gibt einem Spieler einen benannten Commandblock"))
-                .arguments(GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
-                        GenericArguments.remainingJoinedStrings(Text.of("cbname")))
+                .arguments(GenericArguments.onlyOne(GenericArguments.string(Text.of("cbname"))))
+                //.arguments(GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
+                //        GenericArguments.remainingJoinedStrings(Text.of("cbname")))
                 .permission("cbanmed.command.cbn")
                 .executor(new cbnamedExecutor())
                 .build();
