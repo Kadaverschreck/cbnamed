@@ -33,20 +33,14 @@ import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.data.key.Keys;
-import org.spongepowered.api.data.type.HandType;
 import org.spongepowered.api.data.type.HandTypes;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.item.ItemTypes;
 import org.spongepowered.api.item.inventory.ItemStack;
-import org.spongepowered.api.item.inventory.type.GridInventory;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.text.format.TextStyles;
 
-
-/**
- * Created by Kadaverschreck on 21.01.2017.
- */
 
 public class cbnamedExecutor implements CommandExecutor{
 
@@ -54,7 +48,10 @@ public class cbnamedExecutor implements CommandExecutor{
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException{
         Player target;
         // Player target = args.<Player>getOne("player").get();
+
         String cbname = args.<String>getOne("cbname").get();
+        
+
         ItemStack namedcb = ItemStack.builder()
                 .itemType(ItemTypes.COMMAND_BLOCK).build();
         namedcb.offer(Keys.DISPLAY_NAME, Text.of(cbname));
