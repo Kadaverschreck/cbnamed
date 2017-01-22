@@ -56,11 +56,12 @@ public class cbnamed {
     @Listener
     public void onInit(GameInitializationEvent event) {
         CommandSpec namecbCmd = CommandSpec.builder()
-                .description(Text.of("Einen Command Block mit eigenem Namen geben"))
+                .description(Text.of("Gibt einem Spieler einen benannten Commandblock"))
                 .arguments(GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
                         GenericArguments.remainingJoinedStrings(Text.of("cbname")))
+                .permission("cbanmed.command.cbn")
                 .executor(new cbnamedExecutor())
                 .build();
-        game.getCommandManager().register(this, namecbCmd, "cbnamed", "namedcb", "cbn", "ncb");
+        game.getCommandManager().register(this, namecbCmd, "cbn");
     }
 }
