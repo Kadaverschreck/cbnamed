@@ -38,10 +38,6 @@ import org.spongepowered.api.text.Text;
 import java.util.logging.Logger;
 
 
-/**
- * Created by Kadaverschreck on 21.01.2017.
- */
-
 @Plugin(id="cbnamed", name="CbNamed", version="1.1", authors = "Kadaverschreck",
         url = "https://github.com/Kadaverschreck/cbnamed")
 public class cbnamed {
@@ -55,11 +51,11 @@ public class cbnamed {
     @Listener
     public void onInit(GameInitializationEvent event) {
         CommandSpec namecbCmd = CommandSpec.builder()
-                .description(Text.of("Gibt einem Spieler einen benannten Commandblock"))
+                .description(Text.of("Gibt dir einen benannten Commandblock in die Hauphand"))
+                .permission("cbn.cmd")
                 .arguments(GenericArguments.onlyOne(GenericArguments.string(Text.of("cbname"))))
                 //.arguments(GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
                 //        GenericArguments.remainingJoinedStrings(Text.of("cbname")))
-                .permission("cbanmed.command.cbn")
                 .executor(new cbnamedExecutor())
                 .build();
         game.getCommandManager().register(this, namecbCmd, "cbn");
