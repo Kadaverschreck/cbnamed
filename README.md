@@ -6,6 +6,7 @@ cbnamed ist ein Sponge Plugin, dass einem einen CommandBlock mit selbst
 wählbarem Namen in die leere Haupthand
 
 Der Befehl lautet: /cbn (CommandBlockName)
+
 Die Permission lautet: cbn.cmd
 
 Wenn die Haupthand des Spielers nicht leer ist, bekommt man eine Fehlermeldung.
@@ -18,6 +19,7 @@ cbnamed is a plugin for Minecraft which provides a command that gives yourself
 CommandBlock with a self specified name in your main hand.
 
 The command is: /cbn (ComandBlockName)
+
 The permission is: cbn.cmd
 
 If your main Hand isn't empty the CommandBlock will not be offered and you will get a Error-Message in Chat.
