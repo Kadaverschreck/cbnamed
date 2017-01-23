@@ -10,6 +10,7 @@ Der Befehl lautet: /cbn (CommandBlockName)
 Die Permission lautet: cbn.cmd
 
 Wenn die Haupthand des Spielers nicht leer ist, bekommt man eine Fehlermeldung.
+Wenn das Item in der Haupthand ein CommandBlock ist, wird dieser überschrieben.
 In der Konsole wird angezeit, wenn ein Spieler sich einen CommandBlock gibt.
 
 
@@ -23,6 +24,7 @@ The command is: /cbn (ComandBlockName)
 The permission is: cbn.cmd
 
 If your main Hand isn't empty the CommandBlock will not be offered and you will get a Error-Message in Chat.
+If the item in main Hand is a CommandBlock it will be overwritten.
 In console you will see a Message if a player gives himself a CommandBlock.
 
 
