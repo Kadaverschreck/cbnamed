@@ -60,9 +60,23 @@ public class cbnamedExecutor implements CommandExecutor{
         //prüft, ob der Spieler ein Item in der Haupthand hält
         if (target.getItemInHand(HandTypes.MAIN_HAND).isPresent())
         {
-            //Wenn ja, dann wird dem Spieler eine Fehlermeldung angezeigt.
-            target.sendMessage(Text.of(TextColors.RED, "Bitte mache erst deine rechte Hand frei."));
+            //prüft, ob das Item in der Haupthand ein CommandBlock ist
+            if (target.getItemInHand(HandTypes.MAIN_HAND).get().getItem() == ItemTypes.COMMAND_BLOCK)
+            {
+                //Wenn nicht, dann bekommt der Spieler den CommandBlock in die Haupthand gelegt
+                target.setItemInHand(HandTypes.MAIN_HAND, namedcb);
+                // target.getInventory().query(GridInventory.class).offer(namedcb);
+
+                //Und in der Konsole wird eine Meldung ausgegeben
+                Sponge.getServer().getConsole().sendMessage(Text.of(TextColors.GRAY, TextStyles.ITALIC, "[cbnamed]: Dem Spieler ", target.getName(), " wurde ein CommandBlock mit dem Namen ", cbname, " gegeben."));
+                return CommandResult.success();
+            }
+            else {
+                //Wenn ja, dann wird dem Spieler eine Fehlermeldung angezeigt.
+                target.sendMessage(Text.of(TextColors.RED, "Bitte mache erst deine rechte Hand frei."));
+            }
         }
+
         else
         {
             //Wenn nicht, dann bekommt der Spieler den CommandBlock in die Haupthand gelegt
