@@ -73,7 +73,7 @@ public class cbnamedExecutor implements CommandExecutor{
             }
             else {
                 //Wenn ja, dann wird dem Spieler eine Fehlermeldung angezeigt.
-                target.sendMessage(Text.of(TextColors.RED, "Bitte mache erst deine rechte Hand frei."));
+                target.sendMessage(Text.of(TextColors.RED, "Bitte mache erst deine Haupthand frei."));
             }
         }
 
