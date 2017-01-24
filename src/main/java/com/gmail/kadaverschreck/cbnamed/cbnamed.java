@@ -41,6 +41,9 @@ import java.util.logging.Logger;
 @Plugin(id="cbnamed", name="CbNamed", version="1.1", authors = "Kadaverschreck",
         url = "https://github.com/Kadaverschreck/cbnamed")
 public class cbnamed {
+    public static void main(String[] args){
+
+    }
 
     @Inject
     Game game;
