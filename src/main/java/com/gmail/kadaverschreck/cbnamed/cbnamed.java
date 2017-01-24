@@ -28,28 +28,45 @@ package com.gmail.kadaverschreck.cbnamed;
 
 
 import com.google.inject.Inject;
+import org.slf4j.Logger;
 import org.spongepowered.api.Game;
 import org.spongepowered.api.command.args.GenericArguments;
 import org.spongepowered.api.command.spec.CommandSpec;
 import org.spongepowered.api.event.Listener;
-import org.spongepowered.api.event.game.state.GameInitializationEvent;
+import org.spongepowered.api.event.game.state.*;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.text.Text;
-import java.util.logging.Logger;
-
 
 @Plugin(id="cbnamed", name="CbNamed", version="1.1", authors = "Kadaverschreck",
         url = "https://github.com/Kadaverschreck/cbnamed")
 public class cbnamed {
-    public static void main(String[] args){
+    public static void main(String[] args){}
+
+    @Inject
+    private Game game;
+
+    @Inject
+    private Logger logger;
+
+    @Listener
+    public void preInit(GamePreInitializationEvent event){
 
     }
 
-    @Inject
-    Game game;
+    @Listener
+    public void postInit(GamePostInitializationEvent event) {
 
-    @Inject
-    Logger logger;
+    }
+
+    @Listener
+    public void onServerStart(GameStartedServerEvent event) {
+        logger.info("cbnamed Plugin has started!");
+    }
+
+    @Listener
+    public void onServerStop(GameStoppedServerEvent event) {
+        logger.info("cbnamed Plugin has stopped!");
+    }
 
     @Listener
     public void onInit(GameInitializationEvent event) {
@@ -63,4 +80,5 @@ public class cbnamed {
                 .build();
         game.getCommandManager().register(this, namecbCmd, "cbn");
     }
+
 }
