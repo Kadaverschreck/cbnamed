@@ -71,7 +71,7 @@ public class cbnamed {
     @Listener
     public void onInit(GameInitializationEvent event) {
         CommandSpec namecbCmd = CommandSpec.builder()
-                .description(Text.of("/cbn <CommandBlockName> Gibt dir einen benannten Commandblock in die Hauphand"))
+                .description(Text.of("/cbn <CommandBlockName> Gibt dir einen benannten Commandblock in die Haupthand"))
                 .permission("cbn.cmd")
                 .arguments(GenericArguments.onlyOne(GenericArguments.string(Text.of("cbname"))))
                 .executor(new cbnamedExecutor())
