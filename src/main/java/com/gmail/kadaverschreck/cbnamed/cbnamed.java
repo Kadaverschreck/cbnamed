@@ -74,8 +74,6 @@ public class cbnamed {
                 .description(Text.of("/cbn <CommandBlockName> Gibt dir einen benannten Commandblock in die Hauphand"))
                 .permission("cbn.cmd")
                 .arguments(GenericArguments.onlyOne(GenericArguments.string(Text.of("cbname"))))
-                //.arguments(GenericArguments.onlyOne(GenericArguments.player(Text.of("player"))),
-                //        GenericArguments.remainingJoinedStrings(Text.of("cbname")))
                 .executor(new cbnamedExecutor())
                 .build();
         game.getCommandManager().register(this, namecbCmd, "cbn");

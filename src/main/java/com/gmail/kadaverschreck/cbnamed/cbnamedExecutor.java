@@ -47,10 +47,8 @@ public class cbnamedExecutor implements CommandExecutor{
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException{
         Player target;
-        // Player target = args.<Player>getOne("player").get();
 
         String cbname = args.<String>getOne("cbname").get();
-
 
         ItemStack namedcb = ItemStack.builder()
                 .itemType(ItemTypes.COMMAND_BLOCK).build();
@@ -81,7 +79,6 @@ public class cbnamedExecutor implements CommandExecutor{
         {
             //Wenn nicht, dann bekommt der Spieler den CommandBlock in die Haupthand gelegt
             target.setItemInHand(HandTypes.MAIN_HAND, namedcb);
-            // target.getInventory().query(GridInventory.class).offer(namedcb);
 
             //Und in der Konsole wird eine Meldung ausgegeben
             Sponge.getServer().getConsole().sendMessage(Text.of(TextColors.GRAY, TextStyles.ITALIC, "[cbnamed]: Dem Spieler ", target.getName(), " wurde ein CommandBlock mit dem Namen ", cbname, " gegeben."));
